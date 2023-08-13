@@ -30,7 +30,7 @@ const widthClass = computed(() => {
         48: 'w-48',
     }[props.width.toString()];
 });
-
+console.log(props.width)
 const alignmentClasses = computed(() => {
     if (props.align === 'left') {
         return 'origin-top-left left-0';

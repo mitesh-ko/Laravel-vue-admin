@@ -1,19 +1,19 @@
 <script setup>
-import { ref } from 'vue';
+import {ref} from 'vue';
 import ApplicationLogo from '@/Components/ApplicationLogo.vue';
 import Dropdown from '@/Components/Dropdown.vue';
 import DropdownLink from '@/Components/DropdownLink.vue';
 import NavLink from '@/Components/NavLink.vue';
 import ResponsiveNavLink from '@/Components/ResponsiveNavLink.vue';
-import { Link } from '@inertiajs/vue3';
+import {Link} from '@inertiajs/vue3';
 
 const showingNavigationDropdown = ref(false);
 </script>
 
 <template>
-    <div>
-        <div class="min-h-screen bg-gray-100">
-            <nav class="bg-white border-b border-gray-100">
+    <div class="ml-14">
+        <div class="min-h-screen bg-gray-100 mt-2 mr-2">
+            <nav class="bg-white border-gray-100 rounded-t-md">
                 <!-- Primary Navigation Menu -->
                 <div class="max-w-full mx-auto px-4 sm:px-6 lg:px-8">
                     <div class="flex justify-between h-16">
@@ -57,13 +57,6 @@ const showingNavigationDropdown = ref(false);
                                     </svg>
                                 </button>
                             </div>
-
-                            <!-- Navigation Links -->
-                            <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                                <NavLink :href="route('dashboard')" :active="route().current('dashboard')">
-                                    Dashboard
-                                </NavLink>
-                            </div>
                         </div>
 
                         <div class="sm:flex sm:items-center sm:ml-6">
@@ -76,17 +69,19 @@ const showingNavigationDropdown = ref(false);
                                                 type="button"
                                                 class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150"
                                             >
-                                                <img src="/defaults/avatar-1.png" alt="user profile" class="h-10 rounded-full" />
+                                                <img src="/defaults/avatar-1.png" alt="user profile"
+                                                     class="h-10 rounded-full"/>
                                             </button>
                                         </span>
                                     </template>
 
                                     <template #content>
-                                        <div class="block w-full px-4 py-2 text-left leading-5 font-medium text-base text-gray-800">
+                                        <div
+                                            class="block w-full px-4 py-2 text-left leading-5 font-medium text-base text-gray-800">
                                             Hi, {{ $page.props.auth.user.name }}
                                         </div>
                                         <hr>
-                                        <DropdownLink :href="route('profile.edit')"> Profile </DropdownLink>
+                                        <DropdownLink :href="route('profile.edit')"> Profile</DropdownLink>
                                         <DropdownLink :href="route('logout')" method="post" as="button">
                                             Log Out
                                         </DropdownLink>
@@ -96,48 +91,37 @@ const showingNavigationDropdown = ref(false);
                         </div>
                     </div>
                 </div>
-
-                <!-- Responsive Navigation Menu -->
-                <div
-                    :class="{ block: showingNavigationDropdown, hidden: !showingNavigationDropdown }"
-                    class="sm:hidden"
-                >
-                    <div class="pt-2 pb-3 space-y-1">
-                        <ResponsiveNavLink :href="route('dashboard')" :active="route().current('dashboard')">
-                            Dashboard
-                        </ResponsiveNavLink>
-                    </div>
-
-                    <!-- Responsive Settings Options -->
-                    <div class="pt-4 pb-1 border-t border-gray-200">
-                        <div class="px-4">
-                            <div class="font-medium text-base text-gray-800">
-                                {{ $page.props.auth.user.name }}
-                            </div>
-                            <div class="font-medium text-sm text-gray-500">{{ $page.props.auth.user.email }}</div>
-                        </div>
-
-                        <div class="mt-3 space-y-1">
-                            <ResponsiveNavLink :href="route('profile.edit')"> Profile </ResponsiveNavLink>
-                            <ResponsiveNavLink :href="route('logout')" method="post" as="button">
-                                Log Out
-                            </ResponsiveNavLink>
-                        </div>
-                    </div>
-                </div>
             </nav>
 
             <!-- Page Heading -->
-            <header class="bg-white shadow" v-if="$slots.header">
-                <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+            <header class="shadow rounded-b-md bg-gray-200" v-if="$slots.header">
+                <hr class="mx-2" />
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <slot name="header" />
                 </div>
             </header>
 
             <!-- Page Content -->
             <main>
-                <slot />
+                <slot/>
             </main>
         </div>
     </div>
+    <aside>
+        <!-- Responsive Navigation Menu -->
+
+        <div class="bg-white absolute z-50 shadow-lg top-0 border-r-2 border-gray-500 h-full md:w-12 hover:md:w-3/12 w-8/12 overflow-hidden">
+            <!--                    :class="{ block: showingNavigationDropdown, hidden: !showingNavigationDropdown }"-->
+            <!--                    class="sm:hidden"-->
+            <!--                >-->
+            <div class="pt-2 pb-3 space-y-1">
+                <ResponsiveNavLink :href="route('dashboard')" :active="route().current('dashboard')">
+                    Dashboard
+                </ResponsiveNavLink>
+                <ResponsiveNavLink :href="route('dashboard')" :active="route().current('users')">
+                    User
+                </ResponsiveNavLink>
+            </div>
+        </div>
+    </aside>
 </template>
