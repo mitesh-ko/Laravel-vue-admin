@@ -11,9 +11,9 @@ const showingNavigationDropdown = ref(false);
 </script>
 
 <template>
-    <div class="ml-14">
+    <div class="ml-24">
         <div class="min-h-screen bg-gray-100 mt-2 mr-2">
-            <nav class="bg-white border-gray-100 rounded-t-md">
+            <nav class="bg-white border-gray-100 rounded-t-md drop-shadow-2xl">
                 <!-- Primary Navigation Menu -->
                 <div class="max-w-full mx-auto px-4 sm:px-6 lg:px-8">
                     <div class="flex justify-between h-16">
@@ -96,7 +96,7 @@ const showingNavigationDropdown = ref(false);
             <!-- Page Heading -->
             <header class="shadow rounded-b-md bg-gray-200" v-if="$slots.header">
                 <hr class="mx-2" />
-                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="w-full mx-auto px-4 sm:px-6 lg:px-8">
                     <slot name="header" />
                 </div>
             </header>
@@ -109,8 +109,7 @@ const showingNavigationDropdown = ref(false);
     </div>
     <aside>
         <!-- Responsive Navigation Menu -->
-
-        <div class="bg-white absolute z-50 shadow-lg top-0 border-r-2 border-gray-500 h-full md:w-12 hover:md:w-3/12 w-8/12 overflow-hidden">
+        <div class="bg-white absolute z-50 shadow-lg top-0 border-r-2 border-gray-500 h-full md:w-20 hover:md:w-3/12 w-8/12 overflow-hidden">
             <!--                    :class="{ block: showingNavigationDropdown, hidden: !showingNavigationDropdown }"-->
             <!--                    class="sm:hidden"-->
             <!--                >-->
@@ -118,8 +117,8 @@ const showingNavigationDropdown = ref(false);
                 <ResponsiveNavLink :href="route('dashboard')" :active="route().current('dashboard')">
                     Dashboard
                 </ResponsiveNavLink>
-                <ResponsiveNavLink :href="route('dashboard')" :active="route().current('users')">
-                    User
+                <ResponsiveNavLink :href="route('users.index')" :active="route().current('users')">
+                    Users
                 </ResponsiveNavLink>
             </div>
         </div>
