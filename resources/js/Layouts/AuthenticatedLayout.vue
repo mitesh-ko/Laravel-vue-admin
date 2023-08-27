@@ -13,7 +13,7 @@ const showingNavigationDropdown = ref(false);
     <aside>
         <!-- Responsive Navigation Menu -->
         <div
-            class="xl:block bg-white absolute z-50 shadow-lg top-0 border-r-2 border-gray-500 h-full w-64  overflow-hidden transition transform duration-150 ease-in-out xl:w-20 hover:md:w-2/12"
+            class="xl:block bg-white z-50 shadow-lg top-0 border-r-2 border-gray-500 h-full w-64 overflow-hidden transition transform duration-150 ease-in-out xl:w-20 hover:md:w-2/12 fixed"
             :class="{ block: showingNavigationDropdown, hidden: !showingNavigationDropdown }">
             <div class="pt-2 pb-3 space-y-1">
                 <!-- Logo -->
@@ -39,11 +39,14 @@ const showingNavigationDropdown = ref(false);
                 <ResponsiveNavLink :href="route('dashboard')" :active="route().current('dashboard')">
                     Dashboard
                 </ResponsiveNavLink>
+                <ResponsiveNavLink :href="route('users.index')" :active="route().current('users.index')">
+                    Users
+                </ResponsiveNavLink>
             </div>
         </div>
     </aside>
 
-    <div class="ml-24">
+    <div class="xl:ml-24">
         <div class="min-h-screen bg-gray-100 mt-2 mr-2">
             <nav class="bg-white border-gray-100 rounded-t-md drop-shadow-2xl">
                 <!-- Primary Navigation Menu -->
